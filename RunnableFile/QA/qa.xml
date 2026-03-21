@@ -1,0 +1,10 @@
+<suite name="Suite" parallel="tests" thread-count="2">
+
+    <test name="Test1">
+		<parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="AutoRun.testngRunPratice"/>
+        </classes>
+    </test>
+
+</suite>
