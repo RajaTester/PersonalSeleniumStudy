@@ -51,14 +51,21 @@ public class OpenBroser {
 			
 		}
 		JavascriptExecutor js=(JavascriptExecutor)driver;
-		wait.until(ExpectedConditions.elementToBeClickable(By.tagName("a")));
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//		wait.until(ExpectedConditions.elementToBeClickable(By.tagName("a")));
 		List<WebElement> links= driver.findElements(By.tagName("a"));
-	
+		System.out.println(links.size());
+	try {
 		for(int i=0;i<links.size();i++) {
+			wait.until(ExpectedConditions.elementToBeClickable(By.tagName("a")));
 			links.get(i).click();
 		}
+	}catch(Exception e) {
 		
+	}
+	finally {
 		driver.quit();
+	}
 
 	}
 
