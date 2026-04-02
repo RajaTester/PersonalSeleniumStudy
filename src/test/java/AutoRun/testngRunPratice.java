@@ -6,17 +6,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class testngRunPratice {
-	WebDriver driver;
+	public WebDriver driver;
 
 	@Parameters("browser")
-	@BeforeTest
+	@BeforeMethod
 	public void lunchbrowser(String browser) {
 		if(browser.equalsIgnoreCase("chrome")) {
 			driver=new ChromeDriver();
@@ -43,8 +44,14 @@ public class testngRunPratice {
 		driver.get("https://practicetestautomation.com/");
 		driver.getTitle();
 	}
+	@Test(groups = {"sanity"})
+	public void getTitle() {
+		driver.get("https://practicetestautomation.com/");
+		String title=driver.getTitle();
+		System.out.println(title);
+	}
 
-	@AfterTest
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}
